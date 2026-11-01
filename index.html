@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/surfcollective-hero.jpg" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -67,18 +68,18 @@
       <div class="section-heading"><h2>FEEL THE<br><em>MOVEMENT.</em></h2><p>Little moments from the water, the pavement and everywhere in between.</p></div>
       <div class="film-grid">
         <button class="film-card film-wave" data-video="assets/wave-catching.mp4" aria-label="Play wave riding film">
-          <video class="film-preview" src="assets/wave-catching.mp4" poster="assets/wave-catching-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+          <video class="film-preview" data-src="assets/wave-catching.mp4" poster="assets/wave-catching-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
           <span class="play">▶</span><span class="film-label"><small>01 / IN THE WATER</small>WAVE CHASERS</span>
         </button>
         <button class="film-card film-skate" data-video="assets/surfskate-turns.mp4" aria-label="Play surfskate film">
-          <video class="film-preview" src="assets/surfskate-turns.mp4" poster="assets/surfskate-turns-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+          <video class="film-preview" data-src="assets/surfskate-turns.mp4" poster="assets/surfskate-turns-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
           <span class="play">▶</span><span class="film-label"><small>02 / ON THE CONCRETE</small>CARVE & FLOW</span>
         </button>
       </div>
     </section>
 
     <section class="manifesto">
-      <div class="manifesto-bg"><video src="assets/wave-catching.mp4" poster="assets/wave-catching-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></div><div class="manifesto-inner">
+      <div class="manifesto-bg"><video data-src="assets/wave-catching.mp4" poster="assets/wave-catching-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div><div class="manifesto-inner">
         <p class="eyebrow light">THE SURF COLLECTIVE STATE OF MIND</p>
         <h2>LESS SCROLLING.<br>MORE <em>SOULFUL</em><br>MOVEMENT.</h2>
         <p>Show up as you are. Leave a little saltier, a little happier, and connected to something bigger.</p>

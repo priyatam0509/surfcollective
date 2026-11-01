@@ -8,6 +8,8 @@ const videos={wave:'assets/wave-catching.mp4',surfskate:'assets/surfskate-turns.
 const previews=document.querySelectorAll('.film-preview,.manifesto-bg video');
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let modalOpen=false;
-function pausePreviews(open){modalOpen=open;previews.forEach(v=>{if(open)v.pause();else if(v.dataset.visible==='1'&&!reduceMotion)v.play().catch(()=>{});});}
-if(reduceMotion)previews.forEach(v=>{v.removeAttribute('autoplay');v.pause();});
-if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>entries.forEach(e=>{const v=e.target;v.dataset.visible=e.isIntersecting?'1':'0';if(e.isIntersecting&&!modalOpen&&!reduceMotion)v.play().catch(()=>{});else v.pause();}),{threshold:.2});previews.forEach(v=>io.observe(v));}
+/* Videos only download once they scroll into view (data-src → src), so they don't slow the first page load. */
+function playPreview(v){if(!v.src&&v.dataset.src)v.src=v.dataset.src;v.play().catch(()=>{});}
+function pausePreviews(open){modalOpen=open;previews.forEach(v=>{if(open)v.pause();else if(v.dataset.visible==='1'&&!reduceMotion)playPreview(v);});}
+if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>entries.forEach(e=>{const v=e.target;v.dataset.visible=e.isIntersecting?'1':'0';if(e.isIntersecting&&!modalOpen&&!reduceMotion)playPreview(v);else v.pause();}),{threshold:.2});previews.forEach(v=>io.observe(v));}
+else if(!reduceMotion)previews.forEach(playPreview);
