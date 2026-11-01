@@ -19,7 +19,7 @@
     <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
     <nav class="nav">
       <a href="#story">OUR STORY</a><a href="#culture">THE CULTURE</a><a href="#films">WATCH</a><a href="#community">COMMUNITY</a>
-      <a class="nav-cta" href="https://wa.me/919036723863?text=Hey%20Surf%20Collective%2C%20I%27d%20love%20to%20connect." target="_blank" rel="noopener">SAY HELLO ↗</a>
+      <a class="nav-cta" href="#enquire">SAY HELLO ↗</a>
     </nav>
   </header>
 
@@ -96,6 +96,21 @@
       </div>
       <div class="social-strip">
         <img src="assets/strip-surf.jpg" alt="Surfers out in the waves while another heads to the water" loading="lazy"><img src="assets/strip-sunset.jpg" alt="The skate bowl at sunset with palm trees" loading="lazy"><img src="assets/strip-skate.jpg" alt="Surfskater riding up the wall of the bowl" loading="lazy"><img src="assets/strip-lesson.jpg" alt="Beginners practising pop-ups on the sand" loading="lazy">
+      </div>
+    </section>
+
+    <section class="enquiry section-pad" id="enquire">
+      <div class="section-kicker light">05 / SAY HELLO</div>
+      <div class="enquiry-grid">
+        <div class="enquiry-intro"><h2>GOT A<br>QUESTION?<br><em>DROP A LINE.</em></h2><p>A first lesson, a surfskate session, a meet-up or just to say hi — tell us what you’re after and send it straight to us on WhatsApp or Instagram.</p></div>
+        <form class="enquiry-form">
+          <label>NAME<input name="name" type="text" autocomplete="name" required placeholder="Your name"></label>
+          <label><span>PHONE <small>(OPTIONAL)</small></span><input name="phone" type="tel" autocomplete="tel" placeholder="+91"></label>
+          <label>INTERESTED IN<select name="interest"><option>Surf lessons</option><option>Surfskate</option><option>Community meet-ups</option><option>Something else</option></select></label>
+          <label>MESSAGE<textarea name="message" rows="4" required placeholder="Tell us a little about what you’re looking for"></textarea></label>
+          <div class="form-actions"><button class="button button-light" type="submit" data-channel="whatsapp">SEND ON WHATSAPP ↗</button><button class="button button-outline" type="submit" data-channel="instagram">SEND ON INSTAGRAM ↗</button></div>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </section>
   </main>

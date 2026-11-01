@@ -13,3 +13,10 @@ function playPreview(v){if(!v.src&&v.dataset.src)v.src=v.dataset.src;v.play().ca
 function pausePreviews(open){modalOpen=open;previews.forEach(v=>{if(open)v.pause();else if(v.dataset.visible==='1'&&!reduceMotion)playPreview(v);});}
 if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>entries.forEach(e=>{const v=e.target;v.dataset.visible=e.isIntersecting?'1':'0';if(e.isIntersecting&&!modalOpen&&!reduceMotion)playPreview(v);else v.pause();}),{threshold:.2});previews.forEach(v=>io.observe(v));}
 else if(!reduceMotion)previews.forEach(playPreview);
+
+/* Enquiry form: WhatsApp opens with the message pre-filled; Instagram can't pre-fill DMs, so the message is copied for pasting. */
+const enquiryForm=document.querySelector('.enquiry-form'),formStatus=document.querySelector('.form-status');
+enquiryForm.addEventListener('submit',e=>{e.preventDefault();const d=new FormData(enquiryForm),channel=e.submitter?.dataset.channel||'whatsapp';
+const text=['Hi Surf Collective!',`Name: ${d.get('name').trim()}`,d.get('phone').trim()&&`Phone: ${d.get('phone').trim()}`,`Interested in: ${d.get('interest')}`,`Message: ${d.get('message').trim()}`].filter(Boolean).join('\n');
+if(channel==='instagram'){const copied=navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject();window.open('https://ig.me/m/surfcollectiveindia','_blank','noopener');copied.then(()=>formStatus.textContent='Message copied ✓ Instagram is opening — just paste it in the chat.',()=>formStatus.textContent='Instagram is opening — copy your message above and paste it in the chat.');}
+else{window.open(`https://wa.me/919036723863?text=${encodeURIComponent(text)}`,'_blank','noopener');formStatus.textContent='Opening WhatsApp — just hit send ✓';}});
